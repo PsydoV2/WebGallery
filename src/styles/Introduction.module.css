@@ -1,0 +1,100 @@
+/* src/components/Introduction.module.css */
+
+.intro {
+  padding: 150px 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 900px; /* Schmaler als der Hero für bessere Lesbarkeit */
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.text {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.4;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 4rem;
+}
+
+/* Deine Signatur-Font als Akzent für bestimmte Wörter */
+.highlight {
+  font-family: var(--font-la-belle), cursive;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.1em;
+  color: #000;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 2rem;
+}
+
+.detailBlock h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.detailBlock p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .intro {
+    padding: 80px 5%;
+  }
+}
+
+/* ... (vorheriges CSS beibehalten) ... */
+
+.noAi {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  color: #000;
+}
+
+.highlight {
+  font-family: var(--font-la-belle), cursive;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 1.1em;
+  color: #000;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+/* Optional: Ein kleines Badge-Styling für "No AI" */
+.detailBlock h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
