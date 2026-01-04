@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
+import { Inter, La_Belle_Aurore } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
+const laBelle = La_Belle_Aurore({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-la-belle", // Die Variable, die wir im CSS nutzen
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "sfalter | Custom Posters & Wallpapers",
-    template: "%s | sfalter",
+    default: "sfalter / gallery",
+    template: "%s / sfalter",
   },
   description:
     "Explore exclusive, self-designed posters and high-resolution wallpapers by sfalter. Unique digital art and printables for your space and screens.",
@@ -17,13 +26,13 @@ export const metadata: Metadata = {
     "High-Res Backgrounds",
     "Printable Art",
   ],
-  authors: [{ name: "sfalter" }],
+  authors: [{ name: "Sebastian Falter" }],
   creator: "sfalter",
   openGraph: {
     title: "sfalter | Custom Posters & Wallpapers",
     description:
       "Unique visual designs for your walls and digital devices. Designed by sfalter.",
-    url: "https://art.sfalter.de", // Update with your chosen subdomain
+    url: "https://gallery.sfalter.de", // Update with your chosen subdomain
     siteName: "sfalter Design",
     images: [
       {
@@ -43,6 +52,15 @@ export const metadata: Metadata = {
       "Download high-quality wallpapers and discover unique poster designs by sfalter.",
     images: ["/og-image.jpg"],
   },
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -51,8 +69,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${laBelle.variable}`}>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

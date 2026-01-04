@@ -1,13 +1,6 @@
 :root {
-  --background: #ffffff;
+  --background: #faf1e4;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html,
@@ -24,6 +17,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -35,8 +32,36 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/*  */
+
+nav {
+  width: 100%;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+
+  /* background-color: red; */
+
+  padding: 0.5rem 1rem;
+}
+
+nav div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav div h1 {
+  /* Hier greifst du auf die Next.js Variable zu */
+  font-family: var(--font-la-belle), cursive;
+
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  text-decoration: none;
+
+  /* Ein bisschen Feinschliff für Handschriften */
+  letter-spacing: 0.02em;
+  font-display: swap;
 }
