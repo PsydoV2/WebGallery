@@ -21,8 +21,8 @@ export default function Footer() {
           <div className={styles.links}>
             <div className={styles.linkGroup}>
               <h4>Navigation</h4>
-              <a href="#posters">Posters</a>
-              <a href="#wallpapers">Wallpapers</a>
+              <a href="#gallery">Posters</a>
+              <a href="#gallery">Wallpapers</a>
             </div>
             <div className={styles.linkGroup}>
               <h4>Connect</h4>
