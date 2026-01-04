@@ -33,5 +33,12 @@
     "filename": "Porsche911GT3RSPoster",
     "type": "poster",
     "orientation": "vertical"
+  },
+  {
+    "id": "6",
+    "title": "Hansestadt Hamburg",
+    "filename": "HansestadtHamburg",
+    "type": "poster",
+    "orientation": "vertical"
   }
 ]
