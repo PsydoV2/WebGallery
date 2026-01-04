@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Web Gallery | Posters & Wallpapers
 
-## Getting Started
+A curated digital showcase of self-designed posters and high-resolution wallpapers. This platform serves as a visual portfolio and a distribution hub for unique digital art.
 
-First, run the development server:
+**Live at:** [gallery.sfalter.de](https://gallery.sfalter.de)
+
+---
+
+## ✨ Features
+
+- **High-Res Downloads:** Access premium wallpapers for mobile and desktop.
+- **Poster Gallery:** Browse custom-designed posters with detailed views.
+- **Responsive Design:** Fully optimized for all screen sizes – from smartphones to 4K monitors.
+- **Performance First:** Built with Next.js for lightning-fast loading times and optimized images.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 14/15](https://nextjs.org/) (App Router)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Deployment:** [Vercel](https://vercel.com/) (or your preferred host)
+
+## 🚀 Getting Started
+
+First, clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/PsydoV2/WebGallery.git
+cd WebGallery
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+├── public/          # Static assets (Logos, OG-Images)
+├── src/
+│   ├── app/         # Next.js App Router (Pages & Layouts)
+│   ├── components/  # Reusable UI components (Gallery, Cards, etc.)
+│   ├── data/        # JSON files or constants for poster metadata
+│   └── styles/      # Global CSS and Tailwind config
+└── next.config.mjs  # Next.js configuration
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚖️ License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All designs, posters, and wallpapers are created by **Sebastian Falter**.
+Personal use is generally allowed, but commercial redistribution is prohibited unless stated otherwise.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ by [Sebastian Falter](https://sfalter.de)
