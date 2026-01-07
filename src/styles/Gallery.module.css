@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: column;
 
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
 }
@@ -55,7 +55,7 @@
   aspect-ratio: 3/4; /* Standard Poster-Format, passt sich bei horizontal an */
   background: transparent;
   overflow: hidden;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
 }
 
 .imageWrapper img {
@@ -63,24 +63,6 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover .overlay {
-  opacity: 1;
 }
 
 .card:hover img {
@@ -95,42 +77,34 @@
 
 .downloadLinks {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: row;
   align-items: center;
 }
 
 .downloadLinks a {
-  color: #fff;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  position: relative;
   padding: 4px 0;
 
-  backdrop-filter: blur(1px);
-  padding: 0.5rem 1rem;
+  width: 50%;
+
+  padding: 1rem 1.5rem;
   border-radius: 0.5rem;
+
+  /* background-color: #888; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  transition: 0.2s ease-in-out 0s;
 }
 
-/* Die animierte Linie unter dem Text */
-.downloadLinks a::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: #fff;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease-out;
-}
-
-.downloadLinks a:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.downloadLinks a:hover {
+  color: #888;
 }
 
 .info {

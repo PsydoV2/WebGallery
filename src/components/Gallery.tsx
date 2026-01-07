@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "@/styles/Gallery.module.css";
 import galleryData from "@/data/gallery.json";
+import { FaDownload } from "react-icons/fa6";
 
 export default function Gallery() {
   const [filterType, setFilterType] = useState("all");
@@ -45,7 +46,7 @@ export default function Gallery() {
             onClick={() => setFilterOri("all")}
             className={filterOri === "all" ? styles.active : ""}
           >
-            Any Orientation
+            All
           </button>
           <button
             onClick={() => setFilterOri("vertical")}
@@ -71,22 +72,21 @@ export default function Gallery() {
                 alt={item.title}
                 loading="lazy"
               />
-              <div className={styles.overlay}>
-                <div className={styles.downloadLinks}>
-                  <a href={`${baseURL}${item.filename}.pdf`} download>
-                    Download PDF
-                  </a>
-                  <a href={`${baseURL}${item.filename}.png`} download>
-                    Download PNG
-                  </a>
-                </div>
-              </div>
             </div>
             <div className={styles.info}>
               <h3>{item.title}</h3>
               <span>
                 {item.type} • {item.orientation}
               </span>
+            </div>
+
+            <div className={styles.downloadLinks}>
+              <a href={`${baseURL}${item.filename}.pdf`} download>
+                <FaDownload /> PDF
+              </a>
+              <a href={`${baseURL}${item.filename}.png`} download>
+                <FaDownload /> PNG
+              </a>
             </div>
           </div>
         ))}
