@@ -80,10 +80,18 @@ export default function Gallery() {
               </div>
 
               <div className={styles.downloadLinks}>
-                <a href={`${baseURL}${item.filename}.pdf`} download>
+                <a
+                  href={`${baseURL}${item.filename}.pdf`}
+                  download
+                  target="_blank"
+                >
                   <FaDownload /> PDF
                 </a>
-                <a href={`${baseURL}${item.filename}.png`} download>
+                <a
+                  href={`${baseURL}${item.filename}.png`}
+                  download
+                  target="_blank"
+                >
                   <FaDownload /> PNG
                 </a>
               </div>
