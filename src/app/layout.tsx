@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Inter, La_Belle_Aurore } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
-const laBelle = La_Belle_Aurore({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-la-belle", // Die Variable, die wir im CSS nutzen
-});
 
 export const metadata: Metadata = {
   title: {
@@ -69,8 +60,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${laBelle.variable}`}>
-      <body className={inter.className}>{children}</body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }

@@ -65,7 +65,7 @@ export default function Gallery() {
               <div className={styles.imageWrapper}>
                 <motion.img
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.2 }}
                   src={`${baseURL}${item.filename}.png`}
                   alt={item.title}
                   loading="lazy"

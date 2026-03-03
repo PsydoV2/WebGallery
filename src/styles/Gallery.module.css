@@ -44,10 +44,9 @@
 .card {
   display: flex;
   flex-direction: column;
-
-  /* border: 1px solid #ddd; */
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
+  overflow: hidden; /* wichtig: clip das Bild an den Ecken */
+  background: var(--background);
 }
 
 .imageWrapper {
@@ -62,53 +61,43 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.downloadLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .downloadLinks {
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .downloadLinks a {
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  padding: 4px 0;
-
-  width: 50%;
-
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-
-  /* background-color: #888; */
-
+  flex: 1;
+  padding: 12px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 6px;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
 
-  transition: 0.2s ease-in-out 0s;
+.downloadLinks a:first-child {
+  border-right: 1px solid var(--background);
 }
 
 .downloadLinks a:hover {
-  color: #888;
+  background: #000;
+  color: #fff;
 }
 
 .info {
-  margin-top: 15px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .info h3 {
