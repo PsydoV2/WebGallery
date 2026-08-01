@@ -2,6 +2,7 @@
 "use client";
 import styles from "@/styles/Footer.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,8 +22,8 @@ export default function Footer() {
           <div className={styles.links}>
             <div className={styles.linkGroup}>
               <h4>Navigation</h4>
-              <a href="#gallery">Posters</a>
-              <a href="#gallery">Wallpapers</a>
+              <Link href="/?type=poster#gallery">Posters</Link>
+              <Link href="/?type=wallpaper#gallery">Wallpapers</Link>
             </div>
             <div className={styles.linkGroup}>
               <h4>Connect</h4>

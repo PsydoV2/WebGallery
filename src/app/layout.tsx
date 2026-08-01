@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import { La_Belle_Aurore } from "next/font/google";
 import "@/styles/globals.css";
 
+const laBelleAurore = La_Belle_Aurore({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-la-belle",
+});
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gallery.sfalter.de"),
   title: {
     default: "sfalter / gallery",
     template: "%s / sfalter",
@@ -60,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={laBelleAurore.variable}>
       <body>{children}</body>
     </html>
   );

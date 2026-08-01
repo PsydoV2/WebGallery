@@ -1,15 +1,20 @@
 "use client";
-import { motion, cubicBezier } from "framer-motion";
+import { motion, cubicBezier, useReducedMotion } from "framer-motion";
 import styles from "@/styles/Introduction.module.css";
 
 export default function Introduction() {
+  const shouldReduceMotion = useReducedMotion();
+
   // Definition der Animations-Varianten
   const fadeInVariant = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: cubicBezier(0.21, 0.47, 0.32, 0.98) },
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: cubicBezier(0.21, 0.47, 0.32, 0.98),
+      },
     },
   };
 
@@ -17,7 +22,7 @@ export default function Introduction() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 },
+      transition: { staggerChildren: shouldReduceMotion ? 0 : 0.2 },
     },
   };
 

@@ -1,13 +1,21 @@
 "use client";
-import { motion, useScroll, useTransform, easeOut } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  easeOut,
+} from "framer-motion";
 import styles from "@/styles/Hero.module.css";
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   // Verfolgt den Scroll-Fortschritt
   const { scrollY } = useScroll();
 
   // Parallax-Effekte: Text bewegt sich beim Scrollen leicht nach oben
-  const y1 = useTransform(scrollY, [0, 500], [0, -100]);
+  const y1 = useTransform(scrollY, [0, 500], shouldReduceMotion ? [0, 0] : [0, -100]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   // Varianten für den ersten Lade-Effekt
@@ -15,16 +23,16 @@ export default function Hero() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.3 },
+      transition: { staggerChildren: shouldReduceMotion ? 0 : 0.3 },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: shouldReduceMotion ? 0 : 50, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: easeOut },
+      transition: { duration: shouldReduceMotion ? 0 : 0.8, ease: easeOut },
     },
   };
 

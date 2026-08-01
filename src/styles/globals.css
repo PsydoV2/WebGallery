@@ -38,12 +38,25 @@ a {
 nav {
   width: 100%;
   position: fixed;
+  z-index: 100;
 
   display: flex;
-
-  /* background-color: red; */
+  justify-content: space-between;
+  align-items: center;
 
   padding: 0.5rem 1rem;
+  background: transparent;
+  backdrop-filter: none;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+nav.scrolled {
+  background: rgba(250, 241, 228, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
 nav div {
@@ -64,4 +77,16 @@ nav div h1 {
   /* Ein bisschen Feinschliff für Handschriften */
   letter-spacing: 0.02em;
   font-display: swap;
+}
+
+nav .navLink {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  transition: opacity 0.2s ease;
+}
+
+nav .navLink:hover {
+  opacity: 0.5;
 }
