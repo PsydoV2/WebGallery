@@ -27,7 +27,7 @@ export default function Introduction() {
   };
 
   return (
-    <section className={styles.intro}>
+    <section className={styles.intro} id="intro">
       <div className={styles.wrapper}>
         {/* Erster Block: Vision */}
         <motion.div

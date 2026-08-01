@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "@/styles/Gallery.module.css";
 import galleryData from "@/data/gallery.json";
-import { FaDownload } from "react-icons/fa6";
+import { FaDownload, FaXmark } from "react-icons/fa6";
+
+type GalleryItem = (typeof galleryData)[number];
 
 export default function Gallery() {
   const [filterType, setFilterType] = useState("all");
@@ -11,8 +13,23 @@ export default function Gallery() {
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>(
     {}
   );
+  const [previewItem, setPreviewItem] = useState<GalleryItem | null>(null);
 
   const baseURL = "https://www.sfalter.de/FileHosting/Gallery/";
+
+  // Schliesst die Preview per Escape und sperrt das Body-Scrolling, solange sie offen ist.
+  useEffect(() => {
+    if (!previewItem) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreviewItem(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [previewItem]);
 
   // Erlaubt Deep-Links wie /?type=poster#gallery (z.B. aus dem Footer).
   // Bewusst als Mount-Effect statt Lazy-State: window ist beim SSR/Static-
@@ -83,7 +100,12 @@ export default function Gallery() {
                 }}
                 className={styles.card}
               >
-                <div className={styles.imageWrapper}>
+                <button
+                  type="button"
+                  className={styles.imageWrapper}
+                  onClick={() => setPreviewItem(item)}
+                  aria-label={`Preview ${item.title}`}
+                >
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     animate={{ opacity: loadedImages[item.id] ? 1 : 0 }}
@@ -95,7 +117,7 @@ export default function Gallery() {
                       setLoadedImages((prev) => ({ ...prev, [item.id]: true }))
                     }
                   />
-                </div>
+                </button>
 
                 <div className={styles.info}>
                   <h3>{item.title}</h3>
@@ -127,6 +149,73 @@ export default function Gallery() {
           </AnimatePresence>
         </motion.div>
       )}
+
+      <AnimatePresence>
+        {previewItem && (
+          <motion.div
+            className={styles.lightboxOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setPreviewItem(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={previewItem.title}
+          >
+            <motion.div
+              className={styles.lightboxContent}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                className={styles.lightboxClose}
+                onClick={() => setPreviewItem(null)}
+                aria-label="Close preview"
+              >
+                <FaXmark />
+              </button>
+
+              <img
+                className={styles.lightboxImage}
+                src={`${baseURL}${previewItem.filename}.png`}
+                alt={previewItem.title}
+              />
+
+              <div className={styles.lightboxInfo}>
+                <div>
+                  <h3>{previewItem.title}</h3>
+                  <span>
+                    {previewItem.type} • {previewItem.orientation}
+                  </span>
+                </div>
+                <div className={styles.downloadLinks}>
+                  <a
+                    href={`${baseURL}${previewItem.filename}.pdf`}
+                    download
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <FaDownload /> PDF
+                  </a>
+                  <a
+                    href={`${baseURL}${previewItem.filename}.png`}
+                    download
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <FaDownload /> PNG
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

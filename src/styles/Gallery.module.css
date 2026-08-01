@@ -50,10 +50,15 @@
 }
 
 .imageWrapper {
+  display: block;
+  width: 100%;
   position: relative;
   aspect-ratio: 3/4; /* Standard Poster-Format, passt sich bei horizontal an */
   background: #ece1d1; /* Platzhalter, solange das Bild lazy-lädt */
   overflow: hidden;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
   /* border-radius: 0.5rem; */
 }
 
@@ -121,5 +126,102 @@
 @media (max-width: 768px) {
   .filterBar {
     flex-direction: column;
+  }
+}
+
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  background: rgba(23, 23, 23, 0.85);
+}
+
+.lightboxContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  max-height: 100%;
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #1a1a1a;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightboxClose:hover {
+  background: #fff;
+}
+
+.lightboxImage {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #ece1d1;
+}
+
+.lightboxInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+}
+
+.lightboxInfo h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.lightboxInfo span {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.lightboxInfo .downloadLinks {
+  flex: none;
+  width: auto;
+  border-top: none;
+}
+
+.lightboxInfo .downloadLinks a {
+  flex: none;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+}
+
+.lightboxInfo .downloadLinks a:first-child {
+  border-right: 1px solid #ddd;
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .lightboxInfo {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

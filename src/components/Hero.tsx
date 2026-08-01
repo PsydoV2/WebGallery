@@ -6,6 +6,7 @@ import {
   useReducedMotion,
   easeOut,
 } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa6";
 import styles from "@/styles/Hero.module.css";
 
 export default function Hero() {
@@ -54,14 +55,16 @@ export default function Hero() {
           </motion.span>
         </motion.h1>
 
-        <motion.div
+        <motion.a
+          href="#intro"
           className={styles.scrollBadge}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
+          transition={{ delay: shouldReduceMotion ? 0 : 1.5, duration: shouldReduceMotion ? 0 : 1 }}
         >
           Scroll to explore
-        </motion.div>
+          <FaChevronDown aria-hidden />
+        </motion.a>
       </motion.div>
     </section>
   );
